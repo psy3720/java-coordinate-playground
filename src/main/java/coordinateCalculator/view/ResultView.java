@@ -1,19 +1,17 @@
 package coordinateCalculator.view;
 
+import coordinateCalculator.Line;
 import coordinateCalculator.Position;
-
-import java.util.List;
+import coordinateCalculator.Positions;
 
 public class ResultView {
     private static String SPECIAL_CHARACTER = " ● ";
     private static final int Y_COORDINATE_MAX = 24;
     private static final int X_COORNIDATE_MAX = 24;
 
-    private static boolean isPrintCharacter(int x, int y, List<Position> positions) {
-        for(Position position : positions) {
-            if(position.equals(new Position(x, y))) {
-                return true;
-            }
+    private static boolean isPrintCharacter(int x, int y, Positions positions) {
+        if(positions.contains(new Position(x,y))) {
+            return true;
         }
         return false;
     }
@@ -41,7 +39,7 @@ public class ResultView {
         }
     }
 
-    public void print(List<Position> positions) {
+    public void print(Positions positions, Line line) {
         for (int y = Y_COORDINATE_MAX; y > 0; y--) {
             printYline(y);
 
@@ -56,5 +54,6 @@ public class ResultView {
         }
         printXline();
         System.out.println();
+        System.out.println("두 점 사이의 거리는 " + line.length());
     }
 }

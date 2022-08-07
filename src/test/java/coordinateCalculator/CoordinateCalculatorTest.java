@@ -21,15 +21,17 @@ public class CoordinateCalculatorTest {
     @Test
     public void coordinateCalculator() {
         CoordinateCalculator coordinateCalculator = CoordinateCalculator.create();
-        List<Position> result = coordinateCalculator.calculate("(10,10)-(14,15)");
-        assertThat(result).containsExactly(new Position(10,10), new Position(14, 15));
+        Positions result = coordinateCalculator.calculate("(10,10)-(14,15)");
+
+        assertThat(result.contains(new Position(10,10))).isTrue();
+        assertThat(result.contains(new Position(14,15))).isTrue();
     }
 
     @Test
     public void getDistance() {
         CoordinateCalculator coordinateCalculator = CoordinateCalculator.create();
         coordinateCalculator.calculate("(10,10)-(14,15)");
-        double distance = coordinateCalculator.getDistance();
-        assertThat(distance).isEqualTo(6.403124, offset(0.00099));
+        Line line = coordinateCalculator.createLine();
+        assertThat(line.length()).isEqualTo(6.403124, offset(0.00099));
     }
 }
