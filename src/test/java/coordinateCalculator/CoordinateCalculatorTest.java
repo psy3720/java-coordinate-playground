@@ -65,5 +65,17 @@ public class CoordinateCalculatorTest {
         assertThat(height).isEqualTo(8);
     }
 
+    @Test
+    public void isEqualX() {
+        Point point = new Point(1,2);
+        assertThat(point.isEqualX(1)).isTrue();
+    }
+
+    @Test
+    public void isEqualY() {
+        Point point = new Point(1,2);
+        assertThat(point.isEqualY(2)).isTrue();
+    }
+
 
 }

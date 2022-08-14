@@ -15,10 +15,10 @@ public class Line extends Figure {
     }
 
     public double getField() {
-        Point pointA = points.get(0);
-        Point pointB = points.get(1);
-        double powX = Math.pow(pointA.getX() - pointB.getX(), 2);
-        double powY = Math.pow(pointA.getY() - pointB.getY(), 2);
+        Point pointX = points.get(0);
+        Point pointY = points.get(1);
+        double powX = Math.pow(pointX.getX() - pointY.getX(), 2);
+        double powY = Math.pow(pointX.getY() - pointY.getY(), 2);
 
         return Math.sqrt(powX + powY);
     }

@@ -43,13 +43,7 @@ public class Points {
     }
 
     public boolean contains(Point point) {
-        for(Point p : points) {
-            if(p.equals(point)) {
-                return true;
-            }
-        }
-
-        return false;
+        return points.contains(point);
     }
 
     public Figure getFigure() {

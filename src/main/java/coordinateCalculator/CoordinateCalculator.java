@@ -32,6 +32,5 @@ public class CoordinateCalculator {
 
     public Figure generateFigure() {
         return points.getFigure();
-//        return new Line(points);
     }
 }

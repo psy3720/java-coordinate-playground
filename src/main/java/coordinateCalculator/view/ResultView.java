@@ -1,14 +1,13 @@
 package coordinateCalculator.view;
 
 import coordinateCalculator.Figure;
-import coordinateCalculator.Line;
 import coordinateCalculator.Point;
 import coordinateCalculator.Points;
 
 public class ResultView {
     private static String SPECIAL_CHARACTER = " ● ";
     private static final int Y_COORDINATE_MAX = 24;
-    private static final int X_COORNIDATE_MAX = 24;
+    private static final int X_COORDINATE_MAX = 24;
 
     private static boolean isPrintCharacter(int x, int y, Points points) {
         if(points.contains(new Point(x,y))) {
@@ -27,11 +26,11 @@ public class ResultView {
 
     private static void printXline() {
         System.out.print("  +");
-        for (int i = 0; i < X_COORNIDATE_MAX; i++) {
+        for (int i = 0; i < X_COORDINATE_MAX; i++) {
             System.out.print("---");
         }
         System.out.println();
-        for (int i = 0; i <= X_COORNIDATE_MAX; i++) {
+        for (int i = 0; i <= X_COORDINATE_MAX; i++) {
             if (i % 2 == 0) {
                 System.out.printf("%2d", i);
             } else {
@@ -44,7 +43,7 @@ public class ResultView {
         for (int y = Y_COORDINATE_MAX; y > 0; y--) {
             printYline(y);
 
-            for (int x = 0; x < X_COORNIDATE_MAX; x++) {
+            for (int x = 0; x < X_COORDINATE_MAX; x++) {
                 if (isPrintCharacter(x, y, points)) {
                     System.out.printf(SPECIAL_CHARACTER);
                 } else {

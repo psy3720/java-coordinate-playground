@@ -3,10 +3,8 @@ package coordinateCalculator;
 import java.util.Objects;
 
 public class Point {
-    private final int POSITION_X_MAX = 24;
-    private final int POSITION_X_MIN = 0;
-    private final int POSITION_Y_MAX = 24;
-    private final int POSITION_Y_MIN = 0;
+    private final int MAX_VALUE = 24;
+    private final int MIN_VALUE = 0;
     private int x;
     private int y;
 
@@ -18,11 +16,11 @@ public class Point {
     }
 
     private void validate(int x, int y) {
-        if(x > POSITION_X_MAX || x < POSITION_X_MIN) {
+        if(x > MAX_VALUE || x < MIN_VALUE) {
             throw new RuntimeException();
         }
 
-        if(y > POSITION_Y_MAX || y < POSITION_Y_MIN) {
+        if(y > MAX_VALUE || y < MIN_VALUE) {
             throw new RuntimeException();
         }
     }
@@ -33,6 +31,14 @@ public class Point {
 
     public int getY() {
         return y;
+    }
+
+    public boolean isEqualX(int x) {
+        return this.x == x;
+    }
+
+    public boolean isEqualY(int y) {
+        return this.y == y;
     }
 
     @Override

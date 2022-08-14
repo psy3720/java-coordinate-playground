@@ -9,33 +9,46 @@ public class Square extends Figure {
     }
 
     private void validate(Points points) {
-        if(points.size() != 4) {
+        if (points.size() != 4) {
             throw new RuntimeException();
         }
 
-        for(int i=0; i< points.size(); i++) {
-            Point point = points.get(i);
-            int x = point.getX();
-            int y = point.getY();
+        for (int i = 0; i < points.size(); i++) {
+            isRectangle(i,points);
+        }
+    }
 
-            int countX = 0;
-            int countY = 0;
+    private void isRectangle(int i, Points points) {
+        Point point = points.get(i);
 
-            for(int j=0; j< points.size(); j++) {
-                Point point1 = points.get(j);
-                if(x == point1.getX()) {
-                    countX++;
-                }
+        if (countX(point.getX(), points) != 2 || countY(point.getY(), points) != 2) {
+            throw new RuntimeException();
+        }
+    }
 
-                if(y == point1.getY()) {
-                    countY++;
-                }
-            }
+    private int countX(int x, Points points) {
+        int countX = 0;
 
-            if(countX != 2 || countY != 2) {
-                throw new RuntimeException();
+        for (int j = 0; j < points.size(); j++) {
+            Point point1 = points.get(j);
+            if (point1.isEqualX(x)) {
+                countX++;
             }
         }
+        return countX;
+    }
+
+    private int countY(int y, Points points) {
+        int countY = 0;
+
+        for (int j = 0; j < points.size(); j++) {
+            Point point1 = points.get(j);
+
+            if (point1.isEqualY(y)) {
+                countY++;
+            }
+        }
+        return countY;
     }
 
     // 면적계산
@@ -46,17 +59,13 @@ public class Square extends Figure {
     public int getWidth(Points points) {
         int width = 1;
 
-        for(int i=0; i< points.size(); i++) {
-            Point point = points.get(i);
-            int x = point.getX();
+        Point point1 = points.get(0);
+        for (int i = 1; i < points.size(); i++) {
+            Point point2 = points.get(i);
 
-            for(int j=i+1; j< points.size(); j++) {
-                Point point1 = points.get(j);
-                int point1X = point1.getX();
-
-                if(point1X != x) {
-                    width = Math.abs(point1X - x);
-                }
+            if (!point1.isEqualX(point2.getX())) {
+                width = Math.abs(point1.getX() - point2.getX());
+                break;
             }
         }
         return width;
@@ -65,17 +74,13 @@ public class Square extends Figure {
     public int getHeight(Points points) {
         int height = 1;
 
-        for(int i = 0; i< this.points.size(); i++) {
-            Point point = this.points.get(i);
-            int y = point.getY();
+        Point point1 = points.get(0);
+        for (int i = 1; i < points.size(); i++) {
+            Point point2 = points.get(i);
 
-            for(int j = i+1; j< this.points.size(); j++) {
-                Point point1 = this.points.get(j);
-                int point1Y = point1.getY();
-
-                if(point1Y != y) {
-                    height = Math.abs(point1Y - y);
-                }
+            if (!point1.isEqualY(point2.getY())) {
+                height = Math.abs(point1.getY() - point2.getY());
+                break;
             }
         }
         return height;
