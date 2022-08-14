@@ -2,7 +2,7 @@ package coordinateCalculator;
 
 import java.util.Objects;
 
-public class Position {
+public class Point {
     private final int POSITION_X_MAX = 24;
     private final int POSITION_X_MIN = 0;
     private final int POSITION_Y_MAX = 24;
@@ -10,7 +10,7 @@ public class Position {
     private int x;
     private int y;
 
-    public Position(int x, int y) {
+    public Point(int x, int y) {
         validate(x,y);
 
         this.x = x;
@@ -39,8 +39,8 @@ public class Position {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Position position = (Position) o;
-        return x == position.x && y == position.y;
+        Point point = (Point) o;
+        return x == point.x && y == point.y;
     }
 
     @Override

@@ -1,25 +1,29 @@
 package coordinateCalculator;
 
-public class Line {
-    Positions positions;
+public class Line extends Figure {
+    Points points;
 
-    public Line(Positions positions) {
-        validate(positions);
-        this.positions = positions;
+    public Line(Points points) {
+        validate(points);
+        this.points = points;
     }
 
-    private void validate(Positions positions) {
-        if (positions.size() != 2) {
+    private void validate(Points points) {
+        if (points.size() != 2) {
             throw new RuntimeException();
         }
     }
 
-    public double length() {
-        Position positionA = positions.get(0);
-        Position positionB = positions.get(1);
-        double powX = Math.pow(positionA.getX() - positionB.getX(), 2);
-        double powY = Math.pow(positionA.getY() - positionB.getY(), 2);
+    public double getField() {
+        Point pointA = points.get(0);
+        Point pointB = points.get(1);
+        double powX = Math.pow(pointA.getX() - pointB.getX(), 2);
+        double powY = Math.pow(pointA.getY() - pointB.getY(), 2);
 
         return Math.sqrt(powX + powY);
+    }
+
+    public String getFigure() {
+        return "두 점 사이의 거리는 ";
     }
 }
