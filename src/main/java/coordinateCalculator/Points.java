@@ -32,6 +32,10 @@ public class Points {
         if(length == 4) {
             figure = new Square(this);
         }
+
+        if(length == 3) {
+            figure = new Triangle(this);
+        }
     }
 
     public int size() {

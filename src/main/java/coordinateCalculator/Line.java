@@ -1,6 +1,6 @@
 package coordinateCalculator;
 
-public class Line extends Figure {
+public class Line implements Figure {
     Points points;
 
     public Line(Points points) {

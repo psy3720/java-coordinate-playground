@@ -1,11 +1,7 @@
 package coordinateCalculator;
 
-public abstract class Figure {
-    public double getField() {
-        return 0;
-    }
+public interface Figure {
+    public double getField();
 
-    public String getFigure() {
-        return "";
-    }
+    public String getFigure();
 }

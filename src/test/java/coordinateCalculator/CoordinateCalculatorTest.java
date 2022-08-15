@@ -77,5 +77,14 @@ public class CoordinateCalculatorTest {
         assertThat(point.isEqualY(2)).isTrue();
     }
 
+    @Test
+    public void createTriangle() {
+        CoordinateCalculator coordinateCalculator = CoordinateCalculator.create();
+        coordinateCalculator.calculate("(10,10)-(14,15)-(20,8)");
+        Triangle triangle = (Triangle) coordinateCalculator.generateFigure();
+
+        assertThat(triangle.getField()).isEqualTo(29);
+    }
+
 
 }

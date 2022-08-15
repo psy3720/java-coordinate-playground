@@ -10,7 +10,7 @@ public class ResultView {
     private static final int X_COORDINATE_MAX = 24;
 
     private static boolean isPrintCharacter(int x, int y, Points points) {
-        if(points.contains(new Point(x,y))) {
+        if (points.contains(new Point(x, y))) {
             return true;
         }
         return false;
@@ -19,7 +19,8 @@ public class ResultView {
     private static void printYline(int i) {
         if (i % 2 == 0) {
             System.out.printf("%2d|", (i));
-        } else {
+        }
+        if (i % 2 != 0) {
             System.out.printf("  |");
         }
     }
@@ -33,7 +34,8 @@ public class ResultView {
         for (int i = 0; i <= X_COORDINATE_MAX; i++) {
             if (i % 2 == 0) {
                 System.out.printf("%2d", i);
-            } else {
+            }
+            if (i % 2 != 0) {
                 System.out.print("　 ");
             }
         }

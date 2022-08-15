@@ -1,6 +1,6 @@
 package coordinateCalculator;
 
-public class Square extends Figure {
+public class Square implements Figure {
     Points points;
 
     public Square(Points points) {
