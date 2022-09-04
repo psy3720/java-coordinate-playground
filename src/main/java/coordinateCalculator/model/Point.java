@@ -1,4 +1,4 @@
-package coordinateCalculator;
+package coordinateCalculator.model;
 
 import java.util.Objects;
 
@@ -14,6 +14,14 @@ public class Point {
 
     public int getY() {
         return y;
+    }
+
+    public boolean isSameX(int x) {
+        return this.x == x;
+    }
+
+    public boolean isSameY(int y) {
+        return this.y == y;
     }
 
     public Point(int x, int y) {
