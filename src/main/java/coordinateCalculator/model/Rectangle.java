@@ -54,9 +54,11 @@ public class Rectangle extends FigureAbstract {
         int width = Collections.max(setX) - Collections.min(setX);
         int height = Collections.max(setY) - Collections.min(setY);
 
-        System.out.println(width);
-        System.out.println(height);
-
         return (double) width * height;
+    }
+
+    @Override
+    public String getAreaInfo() {
+        return "사각형 넓이는 " + area();
     }
 }

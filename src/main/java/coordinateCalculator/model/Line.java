@@ -20,4 +20,9 @@ public class Line extends FigureAbstract {
 
         return Math.sqrt(Math.pow(pointA.getX() - pointB.getX(), 2) + Math.pow(pointA.getY() - pointB.getY(), 2));
     }
+
+    @Override
+    public String getAreaInfo() {
+        return "두 점 사이의 거리는 " + length();
+    }
 }

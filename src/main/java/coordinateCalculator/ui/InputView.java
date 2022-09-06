@@ -12,14 +12,23 @@ import java.util.regex.Pattern;
 public class InputView {
     Scanner sc;
     Points pointList;
+    ResultView resultView;
 
     public InputView() {
         sc = new Scanner(System.in);
         pointList = new Points();
+        resultView = new ResultView();
     }
 
-    public Figure init() {
-        return FigureFactory.create(input(sc.next()));
+    public void init() {
+        try {
+            System.out.println("좌표를 입력하세요.");
+            Figure figure = FigureFactory.create(input(sc.next()));
+            resultView.init(figure);
+        } catch(RuntimeException e) {
+            this.init();
+        }
+
     }
 
     public Points input(String input) {
@@ -47,7 +56,7 @@ public class InputView {
     }
 
     private Point matchPattern(String input) {
-        System.out.println("input = " + input);
+//        System.out.println("input = " + input);
         String regEx = "\\((\\d{1,2}),(\\d{1,2})\\)";
         Pattern pattern = Pattern.compile(regEx);
         Matcher matcher = pattern.matcher(input);

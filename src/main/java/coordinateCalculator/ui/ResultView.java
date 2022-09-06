@@ -1,9 +1,8 @@
 package coordinateCalculator.ui;
 
+import coordinateCalculator.model.Figure;
 import coordinateCalculator.model.Point;
-
-import java.util.Arrays;
-import java.util.List;
+import coordinateCalculator.model.Points;
 
 public class ResultView {
     public static final String LINE_X_MARK = "----";
@@ -12,14 +11,35 @@ public class ResultView {
     public static final String VERTEX_MARK = "  +";
     public static final String FOUR_BLANK_MARK = "    ";
 
-    public static void main(String[] args) {
-        ResultView resultview = new ResultView();
-        resultview.init(Arrays.asList(new Point(1, 2), new Point(6, 6)));
+    public void init(Figure figure) {
+        printYAxis(figure.getPoints());
+        printXAxis();
+        printAreaInfo(figure);
     }
 
-    private void init(List<Point> points) {
-        printYAxis(points);
-        printXAxis();
+    private void printAreaInfo(Figure figure) {
+        printEmptyLine();
+        System.out.println(figure.getAreaInfo());
+    }
+
+    private void printYAxis(Points points) {
+        for (int i = 24; i > 0; i--) {
+            int index = i;
+
+            printYAxisNumber(i);
+            printDotMark(points, index);
+            printEmptyLine();
+        }
+    }
+
+    private void printDotMark(Points points, int index) {
+        for(int i=1; i<=24; i++) {
+            if(points.hasPoint(new Point(i, index))) {
+                printDot();
+                continue;
+            }
+            printSpace();
+        }
     }
 
     private void printXAxis() {
@@ -43,25 +63,6 @@ public class ResultView {
         System.out.printf(FOUR_BLANK_MARK);
     }
 
-    private void printYAxis(List<Point> points) {
-        for (int i = 24; i > 0; i--) {
-            int index = i;
-
-            printYAxisNumber(i);
-            printDotMark(points, index);
-            printEmptyLine();
-        }
-    }
-
-    private void printDotMark(List<Point> points, int index) {
-        points.stream().forEach(point -> {
-            if (point.isSameY(index)) {
-                printSpace(point.getX());
-                printDot();
-            }
-        });
-    }
-
     private void printYAxisNumber(int i) {
         if (i % 2 == 0) {
             System.out.printf("%2d" + LINE_Y_MARK, i);
@@ -74,10 +75,8 @@ public class ResultView {
         System.out.printf(POINT_MARK);
     }
 
-    private void printSpace(int y) {
-        for (int j = 0; j < y; j++) {
-            System.out.printf(FOUR_BLANK_MARK);
-        }
+    private void printSpace() {
+        System.out.printf(FOUR_BLANK_MARK);
     }
 
     private void printEmptyLine() {

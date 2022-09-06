@@ -3,6 +3,7 @@ package coordinateCalculator;
 import coordinateCalculator.model.Line;
 import coordinateCalculator.model.FigureFactory;
 import coordinateCalculator.model.Rectangle;
+import coordinateCalculator.model.Triangle;
 import coordinateCalculator.ui.InputView;
 import org.junit.jupiter.api.Test;
 
@@ -39,6 +40,12 @@ public class InputViewTest {
     void Line_클래스_반환() {
         InputView inputView = new InputView();
         assertThat(FigureFactory.create(inputView.input("(1,2)-(3,4)"))).isInstanceOf(Line.class);
+    }
+
+    @Test
+    void Triangle_클래스_반환() {
+        InputView inputView = new InputView();
+        assertThat(FigureFactory.create(inputView.input("(10,10)-(14,15)-(20,8)"))).isInstanceOf(Triangle.class);
     }
 
     @Test
