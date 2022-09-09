@@ -5,18 +5,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Rectangle extends FigureAbstract {
-    public static final int RECTANGLE_COORDINATE_SIZE = 4;
-
     public Rectangle(Points points) {
         super(points);
         validate(points);
     }
 
     private void validate(Points points) {
-        if(points.size() != RECTANGLE_COORDINATE_SIZE) {
-            throw new RuntimeException("좌표를 올바르게 입력해주세요.");
-        }
-
         if(isRectangle()) {
             throw new RuntimeException("직사각형이 아닙니다..");
         }

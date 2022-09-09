@@ -2,6 +2,7 @@ package coordinateCalculator.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Points {
     List<Point> pointList;
@@ -19,7 +20,8 @@ public class Points {
     }
 
     public boolean hasPoint(Point point) {
-        return pointList.stream().filter(point::equals).findFirst().isPresent();
+        return pointList.stream()
+                .anyMatch(point::equals);
     }
 
     public int size() {
@@ -28,5 +30,22 @@ public class Points {
 
     public Point get(int index) {
         return pointList.get(index);
+    }
+
+    public boolean isEmpty() {
+        return pointList.isEmpty();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Points points = (Points) o;
+        return Objects.equals(pointList, points.pointList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(pointList);
     }
 }

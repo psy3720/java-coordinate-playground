@@ -1,15 +1,16 @@
 package coordinateCalculator.model;
 
-public class FigureAbstract implements Figure {
+import java.util.Objects;
+
+public abstract class FigureAbstract implements Figure {
     Points points;
 
     public FigureAbstract(Points points) {
-        this.points = points;
-    }
+        if(null == points || points.isEmpty()) {
+            throw new RuntimeException("올바른 포인트값을 입력해주세요.");
+        }
 
-    @Override
-    public boolean hasPoint(Point point) {
-        return points.hasPoint(point);
+        this.points = points;
     }
 
     @Override
@@ -17,11 +18,17 @@ public class FigureAbstract implements Figure {
         return points;
     }
 
-    public Double area() {
-        return null;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        FigureAbstract that = (FigureAbstract) o;
+        return Objects.equals(points, that.points);
     }
 
-    public String getAreaInfo() {
-        return null;
+    @Override
+    public int hashCode() {
+        return Objects.hash(points);
     }
 }

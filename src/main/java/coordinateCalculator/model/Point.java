@@ -3,7 +3,7 @@ package coordinateCalculator.model;
 import java.util.Objects;
 
 public class Point {
-    private static final int POINT_VALUE_MIN = 0;
+    private static final int POINT_VALUE_MIN = 1;
     private static final int POINT_VALUE_MAX = 24;
     int x;
     int y;
@@ -52,5 +52,13 @@ public class Point {
     @Override
     public int hashCode() {
         return Objects.hash(x, y);
+    }
+
+    public double calculateSlope(Point point) {
+        if(point.x == this.x) {
+            return 0.0;
+        }
+
+        return Math.abs((double)(this.y - point.y) / (this.x - point.x));
     }
 }
